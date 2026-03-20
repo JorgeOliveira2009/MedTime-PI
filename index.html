@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedTime</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 1️⃣ SPLASH -->
+<section id="splash" class="tela ativa">
+    <div class="splash-container">
+        <div class="logo-box">
+            <img src="assets/logo.svg" alt="MedTime Logo">
+        </div>
+
+        <h1 class="app-name">MedTime</h1>
+        <div class="underline"></div>
+    </div>
+</section>
+
+<!-- 2️⃣ LOGIN -->
+<section id="login" class="tela">
+    <div class="login-wrapper">
+
+        <div class="login-header">
+            <div class="header-content">
+                <img src="assets/logo.svg">
+                <div>
+                    <h2>Bem-vindo!!</h2>
+                    <div class="linha"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-content">
+
+            <div class="login-card">
+                <h3>Login</h3>
+
+                <input type="email" id="email" placeholder="E-mail">
+                <input type="password" id="senha" placeholder="Senha">
+
+                <button onclick="fazerLogin()">Acessar</button>
+                <p id="mensagem"></p>
+
+                <p>
+                    Não tem uma conta?
+                    <span onclick="trocarTela('cadastro')">Cadastrar-se</span>
+                </p>
+            </div>
+
+            <div class="login-image">
+                <img src="assets/medicina.svg">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 3️⃣ CADASTRO -->
+<section id="cadastro" class="tela">
+    <div class="login-wrapper">
+
+        <div class="login-card">
+            <h3>Cadastro</h3>
+
+            <input type="email" id="email" placeholder="E-mail">
+            <input type="password" id="senha" placeholder="Senha">
+
+            <button onclick="cadastrar()">Criar conta</button>
+            <p id="mensagem"></p>
+
+            <p>
+                Já tem conta?
+                <span onclick="trocarTela('login')">Fazer login</span>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 4️⃣ TELA PRINCIPAL -->
+<section id="principal" class="tela">
+    <div class="app-container">
+
+        <h2>Seus Lembretes 💊</h2>
+
+        <input type="text" id="nomeRemedio" placeholder="Nome do remédio">
+        <input type="time" id="horario">
+
+        <button onclick="adicionarLembrete()">Adicionar</button>
+
+        <ul id="lista"></ul>
+
+        <button onclick="logout()">Sair</button>
+
+    </div>
+</section>
+
+<script src="js/script.js"></script>
+</body>
+</html>

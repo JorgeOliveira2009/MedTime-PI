@@ -1,7 +1,25 @@
-function irPara(pagina) {
-    window.location.href = pagina;
+// 🔄 Troca de telas (SPA)
+function trocarTela(id) {
+    document.querySelectorAll(".tela").forEach(t => {
+        t.classList.remove("ativa");
+    });
+
+    document.getElementById(id).classList.add("ativa");
 }
 
+// 🚀 Splash → Login
+window.onload = function () {
+    setTimeout(() => {
+        if (localStorage.getItem("logado") === "true") {
+            trocarTela("principal");
+            carregarLembretes();
+        } else {
+            trocarTela("login");
+        }
+    }, 2000);
+};
+
+// 📝 Cadastro
 function cadastrar() {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
@@ -18,19 +36,15 @@ function cadastrar() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            email: email,
-            senha: senha
-        })
+        body: JSON.stringify({ email, senha })
     })
     .then(res => res.text())
     .then(msg => {
         mensagem.textContent = msg;
         mensagem.style.color = "green";
 
-        
         setTimeout(() => {
-            irPara("login.html");;
+            trocarTela("login");
         }, 1500);
     })
     .catch(err => {
@@ -40,8 +54,7 @@ function cadastrar() {
     });
 }
 
-
-//função de login
+// 🔐 Login
 function fazerLogin() {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
@@ -58,10 +71,7 @@ function fazerLogin() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            email: email,
-            senha: senha
-        })
+        body: JSON.stringify({ email, senha })
     })
     .then(res => res.json())
     .then(data => {
@@ -71,8 +81,8 @@ function fazerLogin() {
 
             localStorage.setItem("logado", "true");
 
-            // ir para tela principal
-            irPara("app.html");;
+            trocarTela("principal");
+            carregarLembretes();
         } else {
             mensagem.textContent = "Email ou senha incorretos!";
             mensagem.style.color = "red";
@@ -85,24 +95,7 @@ function fazerLogin() {
     });
 }
 
-
-
-
-//app
-
-if (window.location.pathname.includes("app.html")) {
-    if (localStorage.getItem("logado") !== "true") {
-        irPara("login.html");
-    }
-}
-
-
-window.onload = function () {
-    if (window.location.pathname.includes("app.html")) {
-        carregarLembretes();
-    }
-};
-
+// 💊 Lembretes
 function adicionarLembrete() {
     const nome = document.getElementById("nomeRemedio").value;
     const horario = document.getElementById("horario").value;
@@ -113,8 +106,8 @@ function adicionarLembrete() {
     }
 
     const lembrete = {
-        nome: nome,
-        horario: horario,
+        nome,
+        horario,
         tomado: false
     };
 
@@ -157,8 +150,8 @@ function marcarComoTomado(index) {
     carregarLembretes();
 }
 
-// Logout
+// 🚪 Logout
 function logout() {
     localStorage.removeItem("logado");
-    irPara("login.html");
+    trocarTela("login");
 }

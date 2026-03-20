@@ -1,0 +1,181 @@
+/* =========================
+   RESET E CONFIGURAÇÃO GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo geral do app */
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+/* =========================
+   ESTRUTURA DAS TELAS
+========================= */
+.tela {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: none;
+}
+
+.tela.ativa {
+    opacity: 1;
+    z-index: 1;
+    display: block;
+}
+
+/* =========================
+   SPLASH SCREEN
+========================= */
+#splash {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #5BB8CC;
+}   
+
+/* Container principal */
+.splash-container {
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Caixa do ícone */
+.logo-box {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 25px auto;
+    background-color: #ffffff;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagem do logo */
+.logo-box img {
+    width: 240px; 
+}
+
+/* Nome do app */
+.app-name {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+/* Linha abaixo do nome */
+.underline {
+    width: 180px;
+    height: 3px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+/* ================= LOGIN ESTILO IMAGEM ================= */
+
+#login {
+    background-color: #6cc3d5;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-header {
+    background-color: #192d74;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-content img {
+    width: 180px;
+    background-color: #ffffff;
+}
+
+.header-content h2 {
+    color: white;
+    font-size: 22px;
+}
+
+.linha {
+    width: 120px;
+    height: 3px;
+    background-color: white;
+    margin-top: 5px;
+}
+
+.login-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background: #d9d9d9;
+    padding: 20px;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 250px;
+}
+
+.login-card h3 {
+    margin-bottom: 10px;
+}
+
+.login-card input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.login-card span {
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-image img {
+    width: 200px;
+}
