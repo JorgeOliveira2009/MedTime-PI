@@ -1,3 +1,7 @@
+function irPara(pagina) {
+    window.location.href = pagina;
+}
+
 function cadastrar() {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
@@ -26,7 +30,7 @@ function cadastrar() {
 
         
         setTimeout(() => {
-            window.location.href = "login.html";
+            irPara("login.html");;
         }, 1500);
     })
     .catch(err => {
@@ -68,7 +72,7 @@ function fazerLogin() {
             localStorage.setItem("logado", "true");
 
             // ir para tela principal
-            window.location.href = "app.html";
+            irPara("app.html");;
         } else {
             mensagem.textContent = "Email ou senha incorretos!";
             mensagem.style.color = "red";
@@ -81,19 +85,23 @@ function fazerLogin() {
     });
 }
 
-function irParaCadastro() {
-    window.location.href = "cadastro.html";
-}
+
 
 
 //app
 
-if (localStorage.getItem("logado") !== "true") {
-    window.location.href = "login.html";
+if (window.location.pathname.includes("app.html")) {
+    if (localStorage.getItem("logado") !== "true") {
+        irPara("login.html");
+    }
 }
 
 
-window.onload = carregarLembretes;
+window.onload = function () {
+    if (window.location.pathname.includes("app.html")) {
+        carregarLembretes();
+    }
+};
 
 function adicionarLembrete() {
     const nome = document.getElementById("nomeRemedio").value;
@@ -123,6 +131,8 @@ function adicionarLembrete() {
 
 function carregarLembretes() {
     const lista = document.getElementById("lista");
+    if (!lista) return;
+
     lista.innerHTML = "";
 
     let lembretes = JSON.parse(localStorage.getItem("lembretes")) || [];
@@ -150,5 +160,5 @@ function marcarComoTomado(index) {
 // Logout
 function logout() {
     localStorage.removeItem("logado");
-    window.location.href = "login.html";
+    irPara("login.html");
 }
