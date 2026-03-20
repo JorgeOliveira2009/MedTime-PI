@@ -103,9 +103,9 @@ app.delete('/deletar/:id', (req, res) => {  // Corrigido para aceitar o id via p
     const comandoBanco = `DELETE FROM usuarios WHERE id = ?`;  // Corrigido a query
     db.query(comandoBanco, [id], (erro) => {
         if (erro) {
-            return res.status(500).send("Erro ao Deletar Pokemon do Banco!");
+            return res.status(500).send("Erro ao Deletar usuario do Banco!");
         }
-        return res.status(200).send("Sucesso ao Deletar Pokemon do Banco!");
+        return res.status(200).send("Sucesso ao Deletar usuario do Banco!");
     });
 });
 
